@@ -15,6 +15,9 @@ namespace AddressBook
 
             // uc-4
             addressBook.EditContact(dataTable);
+
+            // uc-5
+            addressBook.DeleteContact(dataTable);
         }
     }
 }
