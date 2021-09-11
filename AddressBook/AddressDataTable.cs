@@ -72,5 +72,14 @@ namespace AddressBook
             Console.WriteLine("The Contact is deleted succesfully.\n");
             DisplayContacts(table.AsEnumerable());
         }
+
+        // uc-6
+        public void RetrieveByCityOrState(DataTable table)
+        {
+            string cityState = "Maharashtra";
+            var contacts = table.AsEnumerable().Where(x => x.Field<string>("State") == cityState);
+            Console.WriteLine($"The Contacts with state = {cityState}.\n");
+            DisplayContacts(contacts);
+        }
     }
 }

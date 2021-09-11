@@ -18,6 +18,9 @@ namespace AddressBook
 
             // uc-5
             addressBook.DeleteContact(dataTable);
+
+            // uc-6
+            addressBook.RetrieveByCityOrState(dataTable);
         }
     }
 }
