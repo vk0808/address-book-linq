@@ -22,6 +22,7 @@ namespace AddressBook
             table.Columns.Add("Zip", typeof(string));
             table.Columns.Add("PhoneNumber", typeof(string));
             table.Columns.Add("Email", typeof(string));
+            // uc-9
             table.Columns.Add("BookName", typeof(string));
             table.Columns.Add("BookType", typeof(string));
 
@@ -112,6 +113,20 @@ namespace AddressBook
                            .ToList();
             Console.WriteLine("\nThe Contacts are sorted succesfully: ");
             DisplayContacts(contacts);
+        }
+
+        // uc-10
+        public void GetCountByType(DataTable table)
+        {
+            var friendsCount = table.Rows.Cast<DataRow>()
+                                         .Where(x => x["BookType"].Equals("Friends")).Count();
+            var familyCount = table.Rows.Cast<DataRow>()
+                             .Where(x => x["BookType"].Equals("Family")).Count();
+            var ProfessionalCount = table.Rows.Cast<DataRow>()
+                             .Where(x => x["BookType"].Equals("Profession")).Count();
+            Console.WriteLine($"'Friends' : {friendsCount}");
+            Console.WriteLine($"'Family' : {familyCount}");
+            Console.WriteLine($"'Profession' : {ProfessionalCount}");
         }
     }
 }

@@ -27,6 +27,9 @@ namespace AddressBook
 
             // uc-8
             addressBook.SortContacts(dataTable);
+
+            // uc-10
+            addressBook.GetCountByType(dataTable);
         }
     }
 }
