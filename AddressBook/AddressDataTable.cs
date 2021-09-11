@@ -81,5 +81,14 @@ namespace AddressBook
             Console.WriteLine($"The Contacts with state = {cityState}.\n");
             DisplayContacts(contacts);
         }
+
+        // uc-7
+        public void GetSizeOfCityOrState(DataTable table)
+        {
+            var contacts = table.Rows.Cast<DataRow>()
+                             .GroupBy(x => x["State"].Equals("Karnataka")).Count();
+            Console.WriteLine("Karnataka : {0} ", contacts);
+        }
+
     }
 }
