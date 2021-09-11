@@ -12,6 +12,9 @@ namespace AddressBook
             // uc-1
             AddressDataTable addressBook = new AddressDataTable();
             DataTable dataTable = addressBook.AddressBookDataTable();
+
+            // uc-4
+            addressBook.EditContact(dataTable);
         }
     }
 }
