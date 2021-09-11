@@ -24,6 +24,9 @@ namespace AddressBook
 
             // uc-7
             addressBook.GetSizeOfCityOrState(dataTable);
+
+            // uc-8
+            addressBook.SortContacts(dataTable);
         }
     }
 }

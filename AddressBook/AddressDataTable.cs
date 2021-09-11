@@ -46,6 +46,18 @@ namespace AddressBook
             Console.WriteLine($"{new string('-', 129)}\n");
         }
 
+        public void DisplayContacts(List<DataRow> recordedData)
+        {
+            Console.WriteLine($"{new string('-', 129)}");
+            Console.WriteLine($"|{"FirstName",10} | {"LastName",10} | {"Address",25} | {"City",10} | {"State",10} | {"Zip",10} | {"PhoneNumber",15} | {"Email",15} |");
+            Console.WriteLine($"{new string('-', 129)}");
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine($"|{list.Field<string>("FirstName"),10} | {list.Field<string>("LastName"),10} | {list.Field<string>("Address"),25} | {list.Field<string>("City"),10} | {list.Field<string>("State"),10} | {list.Field<string>("Zip"),10} | {list.Field<string>("PhoneNumber"),15} | {list.Field<string>("Email"),15} |");
+            }
+            Console.WriteLine($"{new string('-', 129)}\n");
+        }
+
         public void EditContact(DataTable table)
         {
             var contacts = table.AsEnumerable().Where(x => x.Field<string>("FirstName") == "Rahul");
@@ -57,7 +69,7 @@ namespace AddressBook
                 contact.SetField("Zip", "43254");
             }
 
-            Console.WriteLine("The Contact is updated succesfully\n");
+            Console.WriteLine("\nThe Contact is updated succesfully: ");
             DisplayContacts(contacts);
         }
 
@@ -69,7 +81,7 @@ namespace AddressBook
             {
                 row.Delete();
             }
-            Console.WriteLine("The Contact is deleted succesfully.\n");
+            Console.WriteLine("\nThe Contact is deleted succesfully: ");
             DisplayContacts(table.AsEnumerable());
         }
 
@@ -78,7 +90,7 @@ namespace AddressBook
         {
             string cityState = "Maharashtra";
             var contacts = table.AsEnumerable().Where(x => x.Field<string>("State") == cityState);
-            Console.WriteLine($"The Contacts with state = {cityState}.\n");
+            Console.WriteLine($"\nThe Contacts with state = {cityState}.");
             DisplayContacts(contacts);
         }
 
@@ -90,5 +102,14 @@ namespace AddressBook
             Console.WriteLine("Karnataka : {0} ", contacts);
         }
 
+        // uc-8
+        public void SortContacts(DataTable table)
+        {
+            var contacts = table.Rows.Cast<DataRow>()
+                           .OrderBy(x => x.Field<string>("FirstName"))
+                           .ToList();
+            Console.WriteLine("\nThe Contacts are sorted succesfully: ");
+            DisplayContacts(contacts);
+        }
     }
 }
